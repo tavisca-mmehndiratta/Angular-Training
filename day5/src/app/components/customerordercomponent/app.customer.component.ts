@@ -69,12 +69,9 @@ export class CustomerComponent implements OnInit {
     this._filteredCustomers = this.customers.filter(cst => this.checkifDataExists(cst, this.searchString));
     if(this._filteredCustomers.length > 0)
     {
-      console.log("filtered customers are : " + JSON.stringify(this._filteredCustomers));
         for(let cst of this._filteredCustomers){
-            console.log("customer id in filtered customers is : " + cst.CustomerId)
             this._customerIdList.push(cst.CustomerId);
         }
-        console.log("customer list value before emiting " + JSON.stringify(this._customerIdList));
         this.serv.onEmitCustomerIdList(this._customerIdList);
     }
     else{
@@ -92,12 +89,9 @@ export class CustomerComponent implements OnInit {
         || cst.CustomerId === parseInt(searchQuery)
         || cst.ContactNo === parseInt(searchQuery))
         {
-            console.log("returned true");
             return true;
         }
     }
-      
-      console.log("returned false");
       return false;
     }
 }
